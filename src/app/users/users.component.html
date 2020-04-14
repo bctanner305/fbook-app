@@ -1,0 +1,32 @@
+    <div class="container">
+        <div class="row" style="margin-top: 45px;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+                <app-fbookcommon></app-fbookcommon>
+            </div>
+            <div class="col-sm-8">
+                <h3>All Registered Users (Both Active and Inactive)</h3>
+
+                <!-- Loop and dispaly all Users-->
+                <ul *ngFor="let user of allusers">
+
+                    <!--Exclude the Current User - since you do not want to block/unblock yourself "-->
+                    <div *ngIf="user.id != currentUser._id" style="border:1px solid #cecece;">
+                        <li>
+              
+                            <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" 
+                                    *ngIf="user.photoImg" [src]='user.photoImg' />
+                            <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" 
+                                  *ngIf="!user.photoImg" src='/assets/smiley.png' />
+                            {{user.lastName}}, {{user.firstName}}
+                            <!-- display Button to either block or unblock the user, based on user.isActive-->
+                            <a *ngIf="user.isActive == true" (click)="blockuser(user.id)" class="btn btn-danger"
+                                style="float: right">Block User</a>
+                            <a *ngIf="user.isActive != true" (click)="unblockuser(user.id)" class="btn btn-success"
+                                style="float: right">UN-Block User</a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>

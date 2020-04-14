@@ -1,0 +1,41 @@
+<div class="row" *ngIf="currentUser">
+    <div class="col-md-8"></div>
+    <div class="panel panel-default container" style="border:1px solid #cecece;">
+        FBOOK
+        
+        <a class="btn btn-link" style="float: right;" (click)="logout()">Logout</a>
+        <a class="btn btn-link" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/setting">Settings</a>
+        <a class="btn btn-link" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/friends">Friends</a>
+        <a class="btn btn-link" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/network">Network</a>
+        <!-- Only the ADMIN people can se the USERS option-->
+<!--       <a class="btn btn-link" routerLinkActive="active-link" 
+                routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/users" *ngIf="currentUser.isAdmin">Users</a> -->
+        <a class="btn btn-link" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/users" >Users</a>
+        <a class="btn btn-link" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" style="float: right;" routerLink="/home">Home</a>
+    </div>
+</div>
+
+<div class="row" *ngIf="!currentUser">
+    <div class="col-md-8"></div>
+    <div class="panel panel-default container" style="border:1px solid #cecece;">
+        FBOOK
+        <a routerLink="/login" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" class="btn btn-link" style="float: right;">Login</a>
+        <a routerLink="/register" routerLinkActive="active-link" 
+            routerLinkActiveOptions="{exact:true}" class="btn btn-link" style="float: right;">Register</a>
+    </div>
+</div>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-8 offset-sm-2"> 
+              <app-alert></app-alert>       
+              <router-outlet></router-outlet>
+          </div>
+      </div>
+  </div>

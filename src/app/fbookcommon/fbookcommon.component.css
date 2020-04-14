@@ -1,0 +1,16 @@
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+.photoimg {
+  border-radius: 50%;  
+}
+.photoImageBtn {
+  font-size: 10px;
+  font-weight: bold;
+}

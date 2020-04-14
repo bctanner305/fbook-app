@@ -1,0 +1,181 @@
+<form [formGroup]="profilesettingForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+        <div class="panel panel-default container">
+             <div class="row">
+                <div class="panel panel-default container" style="border:1px solid #cecece;">
+                    <div class="panel-body container">
+                        <div class="row pad-tp-md pad-bttm-md">
+                            <!-- Left side -->
+                            <div class="col-md-12 col-xs-12 " style="margin-top: 15px;" id="left-box">
+                                <div class="col-xs-12">
+                                    <div class="form-group row">
+                                        <label for="firstName">
+                                            First Name :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="firstName" id="firstName" formControlName="firstName"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                                autofocus="autofocus" type="text" maxlength="20"
+                                                placeholder="First Name"  [(ngModel)]="currentUser.firstName" autocomplete="off"
+                                                style="float: center;">
+                                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.firstName.errors.required">First Name is required
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+
+                                        <label for="lastname">
+                                            Last Name :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="lastname" id="lastname" autofocus="autofocus" type="text"
+                                                formControlName="lastName" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                                                maxlength="20" placeholder="Last Name" [(ngModel)]="currentUser.lastName" autocomplete="off">
+                                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email">
+                                            Email :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="email" id="email" autofocus="autofocus" formControlName="email"
+                                                class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="text"
+                                                maxlength="25" placeholder="Email address" [(ngModel)]="currentUser.email" autocomplete="off">
+                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                <div *ngIf="f.email.errors.required">Emailaddress is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="dob">
+                                            DoB :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9  input-group" style="float: right;">
+                                            <input name="dob" id="dob" autofocus="autofocus" formControlName="dob"
+												#dp="bsDatepicker" bsDatepicker 
+                                                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }"
+
+                                                class="form-control"  
+                                                [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" type="text"
+                                                maxlength="20" placeholder="DD/MM/YYYY" [(ngModel)]="currentUser.dob"
+                                                 autocomplete="off">
+												 <div class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</div> 
+                                            <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                                <div *ngIf="f.dob.errors.required">Date of Birth is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="gender">
+                                            Gender :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="gender" id="gender" autofocus="autofocus"
+                                                formControlName="gender" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" type="text"
+                                                maxlength="20" placeholder="Gender" [(ngModel)]="currentUser.gender" autocomplete="off">
+                                            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                                                <div *ngIf="f.gender.errors.required">Gender is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PHONE-->
+                                    <div class="form-group row">
+                                        <label for="phone">
+                                            Phone :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="phone" id="phone" autofocus="autofocus"
+                                                formControlName="phone" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" type="text"
+                                                maxlength="20" placeholder="Phone" [(ngModel)]="currentUser.phone" autocomplete="off">
+                                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="f.phone.errors.required">Phone is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CITY-->
+                                    <div class="form-group row">
+                                        <label for="city">
+                                            City :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="city" id="city" autofocus="autofocus"
+                                                formControlName="city" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.city.errors }" type="text"
+                                                maxlength="20" placeholder="City" [(ngModel)]="currentUser.city" autocomplete="off">
+                                            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                                <div *ngIf="f.city.errors.required">City is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- STATE-->
+                                    <div class="form-group row">
+                                        <label for="state">
+                                            State :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="state" id="state" autofocus="autofocus"
+                                                formControlName="state" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.state.errors }" type="text"
+                                                maxlength="20" placeholder="State" [(ngModel)]="currentUser.state" autocomplete="off">
+                                            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                                                <div *ngIf="f.state.errors.required">State is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- COUNTRY-->
+                                    <div class="form-group row">
+                                        <label for="country">
+                                            Country :
+                                        </label>
+                                        <div class="col-md-9 col-xs-9 " style="float: right;">
+                                            <input name="country" id="country" autofocus="autofocus"
+                                                formControlName="country" class="form-control"
+                                                [ngClass]="{ 'is-invalid': submitted && f.country.errors }" type="text"
+                                                maxlength="20" placeholder="State" [(ngModel)]="currentUser.country" autocomplete="off">
+                                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                                <div *ngIf="f.country.errors.required">State is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="panel panel-default container ">
+                <button [disabled]="loading" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px;" type="
+                    button">
+					<span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+					SAVE</button>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>

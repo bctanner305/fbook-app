@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row" style="margin-top: 45px;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <app-fbookcommon></app-fbookcommon>
+    </div>
+    <div class="col-sm-8">
+      <h3>Your Friends</h3>
+      <ul *ngFor="let friend of friends">
+        <li>
+          <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" *ngIf="friend.photoImg" [src]='friend.photoImg' />
+          <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" 
+          *ngIf="!friend.photoImg" src='/assets/smiley.png' />
+          {{ friend.friendName }}
+        </li>
+      </ul>
+      <div *ngIf='friends.length === 0'>No have NO friends!!</div>
+    </div>
+  </div>
+</div>

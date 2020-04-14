@@ -1,0 +1,18 @@
+<div>
+    <div style="height: 150px; width: 100px;">
+        <img id="myimage" class="photoimg center" [src]='currentUser.photoImg' />
+        {{currentUser.lastName}}, {{currentUser.firstName}}
+        <input style="display: none" type="file" (change)="onNewPhoto($event)" #fileInput>
+        <button class="photoImageBtn" (click)="fileInput.click()">Change Photo Image</button>
+    </div>
+    <div class="panel panel-default container" style="border:1px solid #cecece; margin-top: 15px;">
+        <div *ngIf="myposts?.length > 1">{{myposts?.length}} Posts</div>
+        <div *ngIf="myposts?.length == 1">{{myposts?.length}} Post</div>
+        <div *ngIf="myposts?.length == 0">NO Posts</div>
+    </div>
+    <div class="panel panel-default container" style="border:1px solid #cecece; margin-top: 15px;">
+        <div *ngIf="myfriends?.length > 1"> {{myfriends?.length}} Connections</div>
+        <div *ngIf="myfriends?.length == 1"> {{myfriends?.length}} Connection</div>
+        <div *ngIf="myfriends?.length == 0"> NO Connections</div>
+    </div>
+</div>

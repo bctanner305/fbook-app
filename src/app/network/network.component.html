@@ -1,0 +1,39 @@
+<form [formGroup]="networkForm" (ngSubmit)="onSubmit()">
+
+
+  <div class="container">
+    <div class="row" style="margin-top: 45px;">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-3">
+        <app-fbookcommon></app-fbookcommon>
+      </div>
+      <div class="col-sm-8">
+        <!-- Loop and display all Users on the Network-->
+        <ul *ngFor="let user of users">
+
+          <!--Exclude the Current User - you do not want to view yourself "-->
+          <!--As well, Exclude existing friends "-->
+          <div *ngIf="user.id != currentUser._id && user.status != 'You are friend'" style="border:1px solid #cecece;">
+            <li>
+              <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" *ngIf="user.photoImg" [src]='user.photoImg' />
+              <img id="myimage" class="photoimg" style="height: 50px; width: 50px;" *ngIf="!user.photoImg"
+                src='/assets/smiley.png' />
+              {{ user.lastName }}, {{ user.firstName }}
+
+              <!-- display Button to either block or unblock the user, based on user.isActive-->
+              <a style="float: right;" *ngIf="user.status == 'Send Request'" (click)="sendrequestuser(user.id)"
+                class="btn btn-primary">Send Request</a>
+              <a style="float: right;" *ngIf="user.status == 'Request Pending'"> Request Pending</a>
+              <a style="float: right;" *ngIf="user.status == 'Accept Friend Request'"
+                (click)="acceptfriendRequest(user.id, user.friendrequestId)" class="btn btn-success">Accept Friend
+                Request</a>
+            </li>
+
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</form>
